@@ -1,0 +1,159 @@
+﻿@model TopCvFake.Models.NopCV
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<table align="center">
+    <h2 style="text-align:center">Đơn xin việc</h2>
+    @using (Html.BeginForm())
+    {@Html.AntiForgeryToken()
+    <tr style="height:40px">
+        <td>
+            Tên đối tác
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+            @Html.DropDownList("MaDoiTac", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DoiTac.TenDoiTac, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+    <tr style="height:40px">
+        <td>
+            Họ và tên :
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+            @Html.DropDownList("MaUser", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User.HoTen, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+    <tr style="height:40px">
+        <td>
+            Điện thoại:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+            @Html.DropDownList("DienThoai", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User.DienThoai, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+    <tr style="height:40px">
+        <td>
+            Địa chỉ:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+            @Html.DropDownList("DiaChi", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User.DiaChi, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Email
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+            @Html.DropDownList("Email", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User.Email, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Ngày sinh:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("NgaySinh", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.User.NgaySinh, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Tên công ty
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("TenCty", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CV.TenCty, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Địa chỉ công ty
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("DiaChiCty", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CV.TenCty, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Công việc ứng tuyển
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("CongViec", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CV.CongViec, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Chức vụ ứng tuyển
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("MaProfile", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Profile.ChucVuUngTuyen, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Trình độ học vấn:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("HocVan", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Profile.HocVan, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Kinh nghiệm làm việc:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.DropDownList("KinhNghiem", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Profile.KinhNghiem, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+  
+    <tr style="height:40px">
+        <td>
+            Hình:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            <img height="100" width="100" src="/@Html.DisplayForModel("HinhCV",null, new { @class = "form-control" })" />
+            @Html.ValidationMessageFor(model => model.Profile.HinhCV, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td>
+            Thư giới thiệu:
+        </td>
+        <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+            @Html.EditorFor(model => model.ThuGioiThieu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ThuGioiThieu, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+    <tr style="height:40px">
+        <td align="left"> <a class="btn button " href="@Url.Action("Index","User")">Trở về nhà chính</a></td>
+        <td align="right">
+            <input type="submit" value="Nộp đơn" style="color:black" />
+        </td>
+    </tr>
+
+
+}
+</table>
+<div>
+   
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

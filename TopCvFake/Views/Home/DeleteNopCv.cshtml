@@ -1,0 +1,111 @@
+﻿@model TopCvFake.Models.NopCV
+
+@{
+    ViewBag.Title = "DeleteNopCv";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+
+<h3 style="text-align:center">Bạn có chắc chắn muốn xoá ??????</h3>
+<table align="center">
+    <h2 style="text-align:center">Thông tin đơn xin việc</h2>
+    @using (Html.BeginForm("DeleteNopCv", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr style="height:40px">
+            <td>
+                Họ tên:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.User.HoTen)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Điện thoại:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.User.DienThoai)>
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Địa chỉ:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.User.DiaChi)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Email:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.User.Email)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Chức vụ ứng tuyển:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.Profile.ChucVuUngTuyen)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Học vấn:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.Profile.HocVan)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Ngôn ngữ:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.Profile.NgonNgu)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Kinh nghiệm:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.Profile.KinhNghiem)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Tên công ty:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.CV.TenCty)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Thư giới thiệu
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.ThuGioiThieu)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Xoá" style="color:black" />
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to List", "IndexUsAccept")

@@ -1,0 +1,87 @@
+﻿@model TopCvFake.Models.CV
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<table align="center">
+    <h2 style="text-align:center">Sửa bài đăng</h2>
+    @using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaBaiDang)
+        <tr style="height:40px">
+            <td>
+                Tên công ty
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.TenCty, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenCty, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Địa chỉ
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Danh mục:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DropDownList("MaPhanLoai", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaPhanLoai, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Lương:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Logo
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                <img height="100" width="100" src="/@Model.Logo" />
+                <input type="file" name="fileUpload" />
+                @Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Công việc
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.CongViec, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CongViec, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        @Html.HiddenFor(model => model.MaDoiTac)
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Lưu" style="color:black" />
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

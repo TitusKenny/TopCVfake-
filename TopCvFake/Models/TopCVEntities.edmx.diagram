@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8e2562bd98b34f19a531c522f18018d2" Name="Diagram1">
+        <EntityTypeShape EntityType="TopCVModel.CV" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopCVModel.DoiTac" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopCVModel.NopCV" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopCVModel.PhanLoaiMN" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopCVModel.sysdiagram" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopCVModel.User" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="TopCVModel.FK_CV_DoiTac" ManuallyRouted="false" />
+        <AssociationConnector Association="TopCVModel.FK_CV_PhanLoaiMN" ManuallyRouted="false" />
+        <AssociationConnector Association="TopCVModel.FK_NopCV_CV" ManuallyRouted="false" />
+        <AssociationConnector Association="TopCVModel.FK_NopCV_DoiTac" ManuallyRouted="false" />
+        <AssociationConnector Association="TopCVModel.FK_NopCV_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TopCVModel.Profile" Width="1.5" PointX="3" PointY="9.25" />
+        <AssociationConnector Association="TopCVModel.FK_NopCV_Profile" />
+        <AssociationConnector Association="TopCVModel.FK_Profile_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

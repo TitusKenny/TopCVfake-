@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TopCVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CV">
+    <Key>
+      <PropertyRef Name="MaMenu" />
+    </Key>
+    <Property Name="MaMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenCty" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="MaPhanLoai" Type="int" />
+    <Property Name="NgayDang" Type="datetime" />
+    <Property Name="Luong" Type="nvarchar(max)" />
+    <Property Name="Logo" Type="nvarchar(max)" />
+    <Property Name="CongViec" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="DoiTac">
+    <Key>
+      <PropertyRef Name="MaDoiTac" />
+    </Key>
+    <Property Name="MaDoiTac" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDoiTac" Type="nvarchar" MaxLength="50" />
+    <Property Name="DienThoai" Type="int" />
+    <Property Name="MaMenu" Type="int" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="GioiThieu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="NopCV">
+    <Key>
+      <PropertyRef Name="MaNop" />
+    </Key>
+    <Property Name="MaNop" Type="int" Nullable="false" />
+    <Property Name="MaDoiTac" Type="int" />
+    <Property Name="MaUser" Type="int" />
+    <Property Name="MaMenu" Type="int" />
+    <Property Name="MaProfile" Type="int" />
+    <Property Name="ThuGioiThieu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="PhanLoaiMN">
+    <Key>
+      <PropertyRef Name="MaPhanLoaiMN" />
+    </Key>
+    <Property Name="MaPhanLoaiMN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenPhanLoaiMN" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="MaProfile" />
+    </Key>
+    <Property Name="MaProfile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChucVuUngTuyen" Type="nvarchar(max)" />
+    <Property Name="MaCV" Type="int" />
+    <Property Name="HinhCV" Type="nvarchar" MaxLength="50" />
+    <Property Name="KinhNghiem" Type="nvarchar(max)" />
+    <Property Name="HocVan" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgonNgu" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="MaUser" />
+    </Key>
+    <Property Name="MaUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoTen" Type="nvarchar(max)" />
+    <Property Name="DienThoai" Type="int" />
+    <Property Name="DiaChi" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="datetime" />
+    <Property Name="MaProfile" Type="int" />
+  </EntityType>
+  <Association Name="FK_CV_PhanLoaiMN">
+    <End Role="PhanLoaiMN" Type="Self.PhanLoaiMN" Multiplicity="0..1" />
+    <End Role="CV" Type="Self.CV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanLoaiMN">
+        <PropertyRef Name="MaPhanLoaiMN" />
+      </Principal>
+      <Dependent Role="CV">
+        <PropertyRef Name="MaPhanLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DoiTac_CV">
+    <End Role="CV" Type="Self.CV" Multiplicity="0..1" />
+    <End Role="DoiTac" Type="Self.DoiTac" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CV">
+        <PropertyRef Name="MaMenu" />
+      </Principal>
+      <Dependent Role="DoiTac">
+        <PropertyRef Name="MaMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NopCV_CV">
+    <End Role="CV" Type="Self.CV" Multiplicity="0..1" />
+    <End Role="NopCV" Type="Self.NopCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CV">
+        <PropertyRef Name="MaMenu" />
+      </Principal>
+      <Dependent Role="NopCV">
+        <PropertyRef Name="MaMenu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NopCV_DoiTac">
+    <End Role="DoiTac" Type="Self.DoiTac" Multiplicity="0..1" />
+    <End Role="NopCV" Type="Self.NopCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DoiTac">
+        <PropertyRef Name="MaDoiTac" />
+      </Principal>
+      <Dependent Role="NopCV">
+        <PropertyRef Name="MaDoiTac" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NopCV_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="NopCV" Type="Self.NopCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="MaProfile" />
+      </Principal>
+      <Dependent Role="NopCV">
+        <PropertyRef Name="MaProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NopCV_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="NopCV" Type="Self.NopCV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="MaUser" />
+      </Principal>
+      <Dependent Role="NopCV">
+        <PropertyRef Name="MaUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="MaProfile" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="MaProfile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TopCVModelStoreContainer">
+    <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoiTac" EntityType="Self.DoiTac" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NopCV" EntityType="Self.NopCV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhanLoaiMN" EntityType="Self.PhanLoaiMN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CV_PhanLoaiMN" Association="Self.FK_CV_PhanLoaiMN">
+      <End Role="PhanLoaiMN" EntitySet="PhanLoaiMN" />
+      <End Role="CV" EntitySet="CV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DoiTac_CV" Association="Self.FK_DoiTac_CV">
+      <End Role="CV" EntitySet="CV" />
+      <End Role="DoiTac" EntitySet="DoiTac" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NopCV_CV" Association="Self.FK_NopCV_CV">
+      <End Role="CV" EntitySet="CV" />
+      <End Role="NopCV" EntitySet="NopCV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NopCV_DoiTac" Association="Self.FK_NopCV_DoiTac">
+      <End Role="DoiTac" EntitySet="DoiTac" />
+      <End Role="NopCV" EntitySet="NopCV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NopCV_Profile" Association="Self.FK_NopCV_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="NopCV" EntitySet="NopCV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NopCV_User" Association="Self.FK_NopCV_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="NopCV" EntitySet="NopCV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Profile" Association="Self.FK_User_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,517 @@
+﻿@{
+    TopCvFake.Models.User userInfor = (TopCvFake.Models.User)Session["Taikhoan"];
+}
+<!doctype html>
+<html lang="vi">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Find a Job - Kiếm công việc nhanh</title>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     @*Template CSS*@ 
+    <link rel="stylesheet" href="~/Content/starter/style-starter.css">
+    <link rel="stylesheet" href="~/Content/Login/Account.css">
+    <script type="text/javascript" src="~/Content/Login/main.js"></script>
+    <link rel="stylesheet" href="~/Content/error/fontAwesome.css">
+</head>
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark stroke">
+                <h1>
+                    <a class="navbar-brand" href="@Url.Action("Index","User")">
+                        <span class="fa fa-book"></span>FCV <span class="logo">Tìm việc Online</span>
+                    </a>
+                </h1>
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mx-lg-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index","User")">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="@Url.Action("About","User")">About</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="@Url.Action("Contact","User")">Contact</a>
+                        </li>
+                    </ul>
+
+
+
+                    <!--/search-right-->
+
+                    <div class="search-right">
+                        <a href="#search" title="search" name="name"><i class="fa fa-search" aria-hidden="true"></i></a>
+                        <!-- search popup -->
+                        <div id="search" class="pop-overlay">
+                            <div class="popup">
+                                <form action="@Url.Action("SearchByName", "User")" method="GET" class="search-box" name="name">
+                                    <input type="search" placeholder="Search" name="name" required="required" autofocus="">
+                                    <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                </form>
+
+                            </div>
+                            <a class="close" href="#close">×</a>
+                        </div>
+                        <!-- /search popup -->
+                    </div>
+                    <div class="navbar-nav mb-1 ">
+                        <div class="dropdown">
+                            <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                                <a class="nav-link" href="#" style="display:inline-block">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-left: -56px; ">
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("IndexMonth", "User", new {id = userInfor.MaUser} )"> Lọc bài đăng trong tháng</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("IndexDay", "User", new {id = userInfor.MaUser} )"> Lọc bài đăng trong ngày</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("IndexHour", "User", new {id = userInfor.MaUser} )"> Lọc bài đăng trong 1 giờ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-nav mb-1 ">
+                        <div class="dropdown">
+                            <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                                <a class="nav-link" href="#" style="display:inline-block">
+                                    <i class="fa fa-filter"></i>
+                                </a>
+                            </li>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="margin-left: -56px; ">
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 1"} )">Quận 1</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 2"} )">Quận 2</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 3"} )">Quận 3</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 4"} )">Quận 4</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 5"} )">Quận 5</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 6"} )">Quận 6</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 7"} )">Quận 7</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 8"} )">Quận 8</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 9"} )">Quận 9<a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 10"} )">Quận 10</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 11"} )">Quận 11</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Quận 12"} )">Quận 12</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Phú Nhuận"} )">Quận Phú Nhuận </a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Bình Thạnh"} )">Quận Bình Thạnh</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Tân Bình"} )">Quận Tân Bình</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Bình Tân"} )">Quận Bình Tân</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Gò Vấp"} )">Quận Gò Vấp</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Thủ Đức"} )">Quận Thủ Đức</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Tân Phú"} )">Quận Tân Phú</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Bình Chánh"} )">Huyện Bình Chánh </a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Cần Giờ"} )">Huyện Cần Giờ</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Củ Chi"} )">Huyện Củ Chi</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Hóc Môn"} )">Huyện Hóc Môn</a>
+                                <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("SearchByDC", "User", new {name = "Nhà Bè"} )">Huyện Nhà Bè</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar-nav mb-1">
+                        <div class="dropdown" style="clear:both">
+                            @if (userInfor != null)
+                            {
+                                <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                                    <a href="#" class="btn btn-secondary rounded-circle">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                    <a class="nav-link text-uppercase" href="#" style="display:inline-block">
+                                        @userInfor.HoTen
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item nutdangnhap text-center" href="~/Login/Logout">Đăng xuất</a>
+                                        <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("Profile", "User", new {id = userInfor.MaUser} )"> Profile</a>
+                                        <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("CV","User", new {id = userInfor.MaUser})">Danh sách CV</a>
+                                        <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("EditProfileUser","User", new {id = userInfor.MaUser})">Sửa thông tin</a>
+                                        <a class="dropdown-item nutdangnhap text-center" href="@Url.Action("IndexUsAccept","User", new {id = userInfor.MaUser})">Danh sách đơn nộp</a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item account" type="button" class="btn dropdown" data-toggle="dropdown">
+                                    <a href="#" class="btn btn-secondary rounded-circle">
+                                        <i class="fa fa-user"></i>
+                                    </a>
+                                    <a class="nav-link text-dark text-uppercase" href="#" style="display:inline-block">
+                                        Tài khoản
+                                    </a>
+                                </li>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nutdangnhap text-center" href="#" data-toggle="modal"
+                                       data-target="#formdangnhap">Đăng nhập</a>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+                    <!-- form dang nhap khi click vao button tren header-->
+                    <div class="modal fade mt-5" id="formdangnhap" data-backdrop="static" tabindex="-1"
+                         aria-labelledby="dangnhap_tieude" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <ul class="tabs d-flex justify-content-around list-unstyled mb-0">
+                                        <li class="tab tab-dangnhap text-center">
+                                            <a class=" text-decoration-none">Đăng nhập</a>
+                                            <hr>
+                                        </li>
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="form-signin" method="post" action="/Login/Index" class="form-signin mt-2">
+                                        <div class="form-label-group">
+                                            <input type="email" class="form-control" placeholder="Nhập tài khoản" name="TaiKhoan"
+                                                   required autofocus>
+                                        </div>
+
+                                        <div class="form-label-group">
+                                            <input type="password" class="form-control" placeholder="Mật khẩu" name="MatKhau" required>
+                                        </div>
+
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
+                                            <a href="#" class="float-right text-decoration-none" style="color: #F5A623">
+                                                Quên mật
+                                                khẩu
+                                            </a>
+                                        </div>
+
+                                        <button class="btn btn-lg btn-block btn-signin text-uppercase text-white" type="submit"
+                                                style="background: #F5A623">
+                                            Đăng nhập
+                                        </button>
+                                        <hr class="my-4">
+                                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit">
+                                            <i class="fab fa-google mr-2"></i> Đăng nhập bằng Google
+                                        </button>
+                                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit">
+                                            <i class="fab fa-facebook-f mr-2"></i> Đăng nhập bằng Facebook
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container py-1">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--/header-->
+    <!-- main-slider -->
+    <section class="w3l-main-slider" id="home">
+        <div class="companies20-content">
+            <div class="owl-one owl-carousel owl-theme">
+                <div class="item">
+
+                    <div class="slider-info banner-view bg bg2">
+                        <div class="banner-info">
+                            <div class="container">
+                                <div class="banner-info-bg">
+                                    <h5>Kiếm công việc nhanh</h5>
+                                    <p class="mt-4 pr-lg-4">Vì cuộc sống ổn định</p>
+                                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="@Url.Action("About","User")">
+                                        Ready to
+                                        get started?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <li>
+                        <div class="slider-info  banner-view banner-top1 bg bg2">
+                            <div class="banner-info">
+                                <div class="container">
+                                    <div class="banner-info-bg">
+                                        <h5>Gửi nhiều công ty </h5>
+                                        <p class="mt-4 pr-lg-4">Tham gia cọ sát tốt hơn </p>
+                                        <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="@Url.Action("About","User")">
+                                            Ready to
+                                            get started?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class="item">
+                    <li>
+                        <div class="slider-info banner-view banner-top2 bg bg2">
+                            <div class="banner-info">
+                                <div class="container">
+                                    <div class="banner-info-bg">
+                                        <h5>Trở thành thành viên của chúng tôi</h5>
+                                        <p class="mt-4 pr-lg-4">Công việc ổn định</p>
+                                        <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="@Url.Action("About","User")">
+                                            Ready to
+                                            get started?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class="item">
+                    <li>
+                        <div class="slider-info banner-view banner-top3 bg bg2">
+                            <div class="banner-info">
+                                <div class="container">
+                                    <div class="banner-info-bg">
+                                        <h5>Tìm kiếm công việc tốt nhất</h5>
+                                        <p class="mt-4 pr-lg-4">Cách tốt nhất để tìm kiếm công việc tốt</p>
+                                        <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="@Url.Action("About","User")">
+                                            Ready to
+                                            get started?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="waveWrapper waveAnimation">
+            <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+                <path d="M-5.07,73.52 C149.99,150.00 299.66,-102.13 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style="stroke: none;"></path>
+            </svg>
+        </div>
+    </section>
+    <!-- /main-slider -->
+    <section class="w3l-courses">
+            @RenderBody()
+    </section>
+    <div class="middle py-5" >
+        <div class="container py-lg-5 py-md-4 py-2">
+            <div class="welcome-left text-center py-lg-4">
+                <h5 class="title-small mb-1">Tìm kiếm công việc online</h5>
+                <h3 class="title-big">Đúng người đúng việc</h3>
+                <a href="@Url.Action("Index","Login")" class="btn btn-style btn-outline-light mt-sm-5 mt-4 mr-2">Tìm việc ngay</a>
+                <a href="@Url.Action("Contact","User")" class="btn btn-style btn-primary mt-sm-5 mt-4">Liên hệ ngay</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <section class="w3l-footer-29-main">
+        <div class="footer-29 py-5">
+            <div class="container py-md-4">
+                <div class="row footer-top-29">
+                    <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-1 pr-lg-5">
+                        <h6 class="footer-title-29">Liên hệ </h6>
+                        <p>Địa chỉ :736 Nguyễn Trãi.</p>
+                        <p class="my-2">Điện thoại : <a href="tel:+84943280630">0943208630</a></p>
+                        <p>Email : <a href="mailto:phuclh0318@dhv.edu.vn">phuclh0318@dhv.edu.vn</a></p>
+                        <div class="main-social-footer-29 mt-4">
+                            <a href="@Url.Action("Error","User")" class="facebook"><span class="fa fa-facebook"></span></a>
+                            <a href="@Url.Action("Error","User")" class="twitter"><span class="fa fa-twitter"></span></a>
+                            <a href="@Url.Action("Error","User")" class="instagram"><span class="fa fa-instagram"></span></a>
+                            <a href="@Url.Action("Error","User")" class="linkedin"><span class="fa fa-linkedin"></span></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-5 col-6 footer-list-29 footer-2 mt-sm-0 mt-5">
+
+                        <ul>
+                            <h6 class="footer-title-29"> Công ty</h6>
+                            <li><a href="@Url.Action("About","User")">Về công ty </a></li>
+                            <li><a href="@Url.Action("RegisterAd","Login")"> Trở thành nhà tuyển dụng </a></li>
+                            <li><a href="@Url.Action("Contact","User")">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                
+                    <div class="col-lg-3 col-md-6 col-sm-7 footer-list-29 footer-4 mt-lg-0 mt-5">
+                        <h6 class="footer-title-29">Suppport</h6>
+                        <a href="@Url.Action("Error","User")"><img src="~/Content/starter/images/googleplay.png" class="img-responsive" alt=""></a>
+                        <a href="@Url.Action("Error","User")"><img src="~/Content/starter/images/appstore.png" class="img-responsive mt-3" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <section class="w3l-copyright text-center">
+            <div class="container">
+                <p class="copy-footer-29">
+                    © 2022 Find Job. All rights reserved. Design by Phúc Titus
+                </p>
+            </div>
+
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                &#10548;
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function () {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }</script>
+            <!-- /move top -->
+        </section>
+        <!-- //copyright -->
+    </section>
+    <!-- //footer -->
+    <!-- Template JavaScript -->
+    <script src="~/Content/starter/js/jquery-3.3.1.min.js"></script>
+
+    <script src="~/Content/starter/js/theme-change.js"></script>
+
+    <!-- stats number counter-->
+    <script src="~/Content/starter/js/jquery.waypoints.min.js"></script>
+    <script src="~/Content/starter/js/jquery.countup.js"></script>
+    <script>$('.counter').countUp();</script>
+    <!-- //stats number counter -->
+
+    <script src="~/Content/starter/js/owl.carousel.js"></script>
+    <!-- script for banner slider-->
+    <script>
+        $(document).ready(function () {
+            $('.owl-one').owlCarousel({
+                loop: true,
+                margin: 0,
+                nav: false,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplaySpeed: 1000,
+                autoplayHoverPause: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    480: {
+                        items: 1
+                    },
+                    667: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1,
+                        nav: true
+                    }
+                }
+            })
+        })</script>
+    <!-- //script -->
+    <!-- disable body scroll which navbar is in active -->
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });</script>
+    <!-- disable body scroll which navbar is in active -->
+    <!--/MENU-JS-->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });</script>
+    <!--//MENU-JS-->
+
+    <script src="~/Content/starter/js/bootstrap.min.js"></script>
+
+    <script src="js/classie.js"></script>
+    <!--start-script-->
+    <script type="text/javascript">
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+        }
+        DropDown.prototype = {
+            initEvents: function () {
+                var obj = this;
+
+                obj.dd.on('click', function (event) {
+                    $(this).toggleClass('active');
+                    event.stopPropagation();
+                });
+            }
+        }
+        $(function () {
+
+            var dd = new DropDown($('#dd'));
+
+            $(document).click(function () {
+                // all dropdowns
+                $('.wrapper-dropdown-2').removeClass('active');
+            });
+
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

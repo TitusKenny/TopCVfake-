@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TopCvFake.Models.NopCV>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ThuGioiThieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CV.TenCty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DoiTac.TenDoiTac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Profile.ChucVuUngTuyen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.HoTen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThuGioiThieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CV.TenCty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DoiTac.TenDoiTac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profile.ChucVuUngTuyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.HoTen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaNop }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaNop }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaNop })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,79 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TopCvFake.Models.CV>
+@{
+    ViewBag.Title = "IndexAdPost";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+<h2 style="text-align:center">Danh sách bài đăng</h2>
+<script src="https://kit.fontawesome.com/9d2984d8fb.js" crossorigin="anonymous"></script>
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/PagedList.css">
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên công ty
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Ngày đăng
+        </th>
+        <th>
+            Lương
+        </th>
+        <th>
+            Hình
+        </th>
+        <th>
+            Công việc
+        </th>
+        <th>
+            Danh mục
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenCty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Luong)
+            </td>
+            <td>
+                <img height="100" width="100" src="/@item.Logo" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CongViec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanLoaiMN.TenPhanLoaiMN)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit","Home", new { id = item.MaBaiDang })"> <i class="fa-solid fa-pen-to-square"></i></a>|
+                <a href="@Url.Action("Details","Home", new { id = item.MaBaiDang })">  <i class="fa-solid fa-circle-info"></i></a>|
+                <a href="@Url.Action("Delete","Home", new { id = item.MaBaiDang })"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="row1" style="clear:both;align-items:center ;margin-left:50%">
+    <div style="text-align:justify-all">Trang  @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+    @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+</div>

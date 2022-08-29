@@ -1,0 +1,66 @@
+﻿@model TopCvFake.Models.CV
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<h2 style="text-align:center">Xoá</h2>
+<h3 style="text-align:center">Bạn có chắc chắn muốn xoá ??????</h3>
+<table align="center">
+    <h2 style="text-align:center">Thông tin bài đăng</h2>
+    @using (Html.BeginForm("Delete", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr style="height:40px">
+            <td>
+                Tên công ty: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.TenCty)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+               Địa chỉ: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.Luong)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Công việc: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.CongViec)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Danh mục: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.PhanLoaiMN.TenPhanLoaiMN)
+            </td>
+        </tr>
+       
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Xoá" style="color:black" />
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to List", "Index")
+
+
+

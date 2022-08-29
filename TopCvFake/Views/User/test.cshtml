@@ -1,0 +1,88 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TopCvFake.Models.CV>
+@using TopCvFake.Models.ViewModels
+@{
+    TopCvFake.Models.User user = (TopCvFake.Models.User)Session["TaiKhoan"];
+}
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/Login/Account.css">
+    <script type="text/javascript" src="~/Content/Login/main.js"></script>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/Content/PagedList.css">
+    <link rel="stylesheet" href="~/Content/starter/style-starter.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+@using (Html.BeginForm("test", "User", FormMethod.Get))
+{
+    <p>
+        Tiêu đề: @Html.TextBox("SearchString") --- Danh mục: @Html.DropDownList("CategoryID", "All")--- Địa chỉ: @Html.TextBox("diachi")--- Mức lương: @Html.TextBox("luong")  <input type="submit" value="Tìm kiếm" />
+    </p>
+}
+<div class="blog pb-5" id="courses">
+    <h5 class="title-small text-center mb-1">Tìm kiếm công việc dễ dàng</h5>
+    <h3 class="title-big text-center mb-sm-5 mb-4">Công việc <span>Online</span></h3>
+    @foreach (var item in Model)
+    {
+        <div class="container">
+            <div class="row1">
+                <div class="col-lg-4 col-md-6 item mt-md-0 mt-5" @*style="margin-top:auto;clear:both"*@>
+                    <div class="card" style="float:left">
+                        <div class="card-header p-0 position-relative">
+                            <a href="@Url.Action( "DetailsCV","User", new { id = item.MaBaiDang })" class="zoom d-block">
+                                <img class="card-img-bottom d-block" src="/@item.Logo" alt="Logo" style="width:300px;height:300px; margin-bottom:-30px" />
+                            </a>
+                        </div>
+                        <div class="card-body course-details">
+                            <div class="price-review d-flex justify-content-between mb-1align-items-center">
+                                <p class="mt-lg-4">
+                                    <span>Lương</span> @Html.DisplayFor(modelItem => item.Luong)
+                                </p>
+                            </div>
+                            <a href="#course-single" class="course-desc">
+                                @Html.DisplayFor(modelItem => item.CongViec)
+                            </a>
+                            <div class="card-footer">
+                                <div class="author align-items-center">
+                                    <img src="/@item.Logo" alt="Logo" class="img-fluid rounded-circle" />
+                                    <ul class="blog-meta">
+                                        <li>
+                                            <span class="meta-value mx-1">by</span> <a href="@Url.Action( "ProfileAdmin","Home", new { id =item.MaDoiTac})">@Html.DisplayFor(modelItem => item.TenCty) </a>
+                                        </li>
+                                        @*<li>
+                                                <span class="meta-value mx-1">in</span> <a href="@Url.Action("SearchByName","User", new { id =item.PhanLoaiMN.TenPhanLoaiMN})"> @Html.DisplayFor(modelItem => item.PhanLoaiMN.TenPhanLoaiMN)</a>
+                                            </li>*@
+                                    </ul>
+                                    <ul class="blog-meta" style="float:left">
+                                        <li>
+                                            @Html.ActionLink("Details", "DetailsCV", new { id = item.MaBaiDang })
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row1" style="clear:both;align-items:center ;margin-left:50%">
+        <div style="text-align:justify-all">
+            Trang  @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("test", new { page }))
+    </div>
+    <script src="~/Content/starter/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Content/starter/js/theme-change.js"></script>
+    <script src="~/Content/starter/js/bootstrap.min.js"></script>

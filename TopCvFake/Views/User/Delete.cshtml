@@ -1,0 +1,70 @@
+﻿@model TopCvFake.Models.Profile
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+
+<h3 style="text-align:center">Bạn có chắc chắn muốn xoá ??????</h3>
+<table align="center">
+    <h2 style="text-align:center">Thông tin đơn xin việc</h2>
+    @using (Html.BeginForm("Delete", "User", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr style="height:40px">
+            <td>
+                Chức vụ ứng tuyển:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.ChucVuUngTuyen)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Hình:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                <img height="100" width="100" src="/@Model.HinhCV" />
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Kinh nghiệm làm việc:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.KinhNghiem)
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Học vấn
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.HocVan)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Ngôn ngữ:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.DisplayFor(model => model.NgonNgu)
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Xoá" style="color:black" />
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to List", "CV")

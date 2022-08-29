@@ -1,0 +1,95 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TopCvFake.Models.NopCV>
+@{
+    ViewBag.Title = "IndexUsAccept";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/Content/PagedList.css">
+<script src="https://kit.fontawesome.com/9d2984d8fb.js" crossorigin="anonymous"></script>
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+
+<h2 style="text-align:center">Danh sách đơn đã nộp</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Họ tên người gửi
+        </th>
+        <th>
+            Điện thoại
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Chức vụ ứng tuyển
+        </th>
+        <th>
+            Học vấn
+        </th>
+        <th>
+            Ngôn ngữ
+        </th>
+        <th>
+            Kinh nghiệm
+        </th>
+        <th>
+            Tên công ty
+        </th>
+        <th>
+            Thư giới thiệu
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.DienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profile.ChucVuUngTuyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profile.HocVan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profile.NgonNgu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Profile.KinhNghiem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CV.TenCty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThuGioiThieu)
+            </td>
+            <td>
+                <a href="@Url.Action("DetailsNopCv","User", new { id = item.MaNop })">  <i class="fa-solid fa-circle-info"></i></a>|
+                <a href="@Url.Action("DeleteNopCv","User", new { id = item.MaNop })"><i class="fa-solid fa-trash-can"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="row1" style="clear:both;align-items:center ;margin-left:50%">
+    <div style="text-align:justify-all">Trang  @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount</div>
+    @Html.PagedListPager(Model, sotrang => Url.Action("Index", new { page = sotrang }))
+</div>

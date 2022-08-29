@@ -1,0 +1,48 @@
+﻿@model TopCvFake.Models.NopCV
+
+@{
+    ViewBag.Title = "DetailsNopCv";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+<link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="~/Content/Details/Details.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<script src="~/Content/Details/Details.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="body1">
+    <div class='container1'>
+        <img class="highlight-window" id='product-img' src="/@Model.Profile.HinhCV" alt="Logo"><img class="highlight-overlay" src="/@Model.Profile.HinhCV" alt="Logo" /><img />
+        <div class='window'>
+            <div class='main-content'>
+                <h2 >Thông tin đơn nộp</h2>
+                <p>Họ tên người nộp: @Html.DisplayFor(model => model.User.HoTen)</p>
+                <p>Điện thoại: @Html.DisplayFor(model => model.User.DienThoai) </p>
+                <p> Địa chỉ: @Html.DisplayFor(model => model.User.DiaChi)</p>
+                <p> Email: @Html.DisplayFor(model => model.User.Email)</p>
+                <p> Ngày sinh: @Html.DisplayFor(model => model.User.NgaySinh)</p>
+                <p> Học vấn:  @Html.DisplayFor(model => model.Profile.HocVan)</p>
+                <p> Ngôn ngữ:  @Html.DisplayFor(model => model.Profile.NgonNgu)</p>
+                <p> Kinh nghiệm:  @Html.DisplayFor(model => model.Profile.KinhNghiem)</p>
+                <p> Tên công ty:  @Html.DisplayFor(model => model.CV.TenCty)</p>
+                <p> Địa chỉ công ty:  @Html.DisplayFor(model => model.DoiTac.DiaChi)</p>
+                <p> Số điện thoại liên hệ:  @Html.DisplayFor(model => model.DoiTac.DienThoai)</p>
+                <p> Công việc ứng tuyển:  @Html.DisplayFor(model => model.CV.CongViec)</p>
+                <p> Thư giới thiệu:  @Html.DisplayFor(model => model.ThuGioiThieu)</p>
+
+                <div></div>
+                <div></div>
+                <div class='divider'></div>
+
+                <div class='purchase-info'>
+                    <a class="btn button"  href="@Url.Action("DeleteNopCv", "User", new { id= Model.MaNop})">Huỷ đơn nộp</a>
+                    <a class="btn button"  href="@Url.Action("IndexUsAccept","User", new {id = Model.MaUser} )">Trở về nhà chính</a>
+                </div>
+                <div></div>
+                <div></div>            
+            </div>
+        </div>
+    </div>
+</div>
+>

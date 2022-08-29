@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TopCvFake.Models.PhanLoaiMN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenPhanLoaiMN)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenPhanLoaiMN)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaPhanLoaiMN }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaPhanLoaiMN }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaPhanLoaiMN })
+        </td>
+    </tr>
+}
+
+</table>

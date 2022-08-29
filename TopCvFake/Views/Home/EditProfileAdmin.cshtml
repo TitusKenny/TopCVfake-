@@ -1,0 +1,86 @@
+﻿@model TopCvFake.Models.DoiTac
+
+@{
+    ViewBag.Title = "EditProfileAdmin";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<table align="center">
+    <h2 style="text-align:center;margin-bottom:10px">Chỉnh sửa thông tin</h2>
+    @using (Html.BeginForm("EditProfileAdmin", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.MaDoiTac)
+        <tr style="height:40px">
+            <td>
+                Họ và tên :
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.TenDoiTac, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenDoiTac, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Điện thoại:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Địa chỉ:
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px">
+            <td>
+                Email: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+                Mật khẩu: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px;">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>
+               Giới thiệu: 
+            </td>
+            <td style=" width: 350px;  padding: 5px; padding-left: 15px; ">
+                @Html.EditorFor(model => model.GioiThieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GioiThieu, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr style="height:40px;padding:5px">
+            <td align="left"> <a class="btn button " style="color:hotpink;" href="@Url.Action("ProfileAdmin","Home")">Trở về nhà chính</a> </td>
+            <td align="right">
+                <input type="submit" value="Lưu" style="color:black" />
+            </td>
+        </tr>
+
+    }
+</table>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

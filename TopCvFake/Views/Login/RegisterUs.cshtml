@@ -1,0 +1,96 @@
+﻿@model TopCvFake.Models.User
+
+@{
+    ViewBag.Title = "RegisterUs";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+<style>
+    body1 {
+        background-image: url("../../Content/Image/Login/bg.jpg") /*no-repeat bottom*/;
+        background-size: auto;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        -ms-background-size: cover;
+        min-height: 100vh;
+        padding: 2em 0;
+        position: relative;
+        z-index: 1;
+        justify-content: center;
+        display: grid;
+        align-items: center;
+    }
+</style>
+
+<link href="~/Content/Image/Login/Style.css" rel="stylesheet" media="all" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<body1 >
+    <div class="content " style="width:800px;margin-left:100px" >
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4 style="text-align:center"> Đăng ký thành viên</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                   Họ và tên
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Điện thoại 
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Địa chỉ
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   Email
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   Mật khẩu
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    Ngày sinh 
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body1>

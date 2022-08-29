@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_LayoutAdAbout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/error/Style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Content/error/fontAwesome.css" type="text/css" media="all" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="w3l-error-block">
+        <div class="page">
+            <div class="content">
+                <div class="logo">
+                    <a class="brand-logo" href="@Url.Action("Index","Home")">Error</a>
+                    <!-- if logo is image enable this
+                        <a class="brand-logo" href="#index.html">
+                            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                        </a>
+                    -->
+                </div>
+                <div class="w3l-error-grid">
+                    <h1>404</h1>
+                    <h2>Page not found</h2>
+                    <p>This web is not available , please back to home</p>
+                    <a href="@Url.Action("Index","Home")" class="home">Back to Home</a>
+                </div>
+
+                <div class="copy-right text-center">
+                    <p>
+                        © 2022 Error. All rights reserved | Design by Phúc Titus
+
+                    </p>
+                </div>
+            </div>
+            <img src="~/Content/error/bg.jpg" class="img-responsive" alt="error image" />
+        </div>
+
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script>
+            var lFollowX = 0,
+                lFollowY = 0,
+                x = 0,
+                y = 0,
+                friction = 1 / 30;
+
+            function animate() {
+                x += (lFollowX - x) * friction;
+                y += (lFollowY - y) * friction;
+
+                translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+                $('img').css({
+                    '-webit-transform': translate,
+                    '-moz-transform': translate,
+                    'transform': translate
+                });
+
+                window.requestAnimationFrame(animate);
+            }
+
+            $(window).on('mousemove click', function (e) {
+
+                var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+                var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+                lFollowX = (20 * lMouseX) / 100; // 100 : 12 = lMouxeX : lFollow
+                lFollowY = (10 * lMouseY) / 100;
+
+            });
+
+            animate();</script>
+    </div>
+</body>
+
+</html>
+

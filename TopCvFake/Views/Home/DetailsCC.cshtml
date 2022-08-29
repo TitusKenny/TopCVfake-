@@ -1,0 +1,39 @@
+﻿@model TopCvFake.Models.CV
+@{
+    ViewBag.Title = "DetailsCC";
+    Layout = "~/Views/Shared/_LayoutAd.cshtml";
+}
+<link href="//fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet">
+<link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="~/Content/Details/Details.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/Content/starter/style-starter.css">
+<script src="~/Content/Details/Details.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="body1">
+    <div class='container1'>
+        <img class="highlight-window" id='product-img' src="/@Model.Logo" alt="Logo"><img class="highlight-overlay" src="/@Model.Logo" alt="Logo" /><img />
+        <div class='window'>
+            <div class='main-content'>
+                <h2>Tin tuyển dụng</h2>
+                <h2> @Html.DisplayFor(model => model.CongViec)</h2>
+                <p> Danh mục: @Html.DisplayFor(model => model.PhanLoaiMN.TenPhanLoaiMN)</p>
+                <p> Lương: @Html.DisplayFor(model => model.Luong)</p>
+                <p> Công ty: @Html.DisplayFor(model => model.TenCty)</p>
+                <p> Địa chỉ: @Html.DisplayFor(model => model.DiaChi)</p>
+                <p> Ngày đăng: @Html.DisplayFor(model => model.NgayDang)</p>
+                <p>Giới thiệu: </p>
+                <div class='description' id='description'>
+                    @Html.DisplayFor(model => model.DoiTac.GioiThieu)
+                </div>
+                <div></div>
+                <div></div>
+                <div class='divider'></div>
+                <div class='purchase-info'>
+                    <a class="btn button" href="@Url.Action("Edit", "Home", new { id = Model.MaBaiDang})">Chỉnh sửa</a>
+                    <a class="btn button" href="@Url.Action("Index","Home")">Trở về nhà chính</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
